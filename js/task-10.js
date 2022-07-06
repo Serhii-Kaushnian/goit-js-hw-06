@@ -21,6 +21,7 @@ createBtn.addEventListener("click", () => {
     boxesDivEl.appendChild(divEl);
   }
 });
+
 resetBtn.addEventListener("click", () => {
   while (boxesDivEl.firstChild) {
     boxesDivEl.removeChild(boxesDivEl.firstChild);

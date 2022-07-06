@@ -7,11 +7,18 @@ const ingredients = [
   "Condiments",
 ];
 
-const uiIngridiens = document.querySelector("#ingredients");
+function creatingUlListFromArray() {
+  let ulToInclude = document.createElement("ul");
+  ulToInclude.id = "#ingredients";
 
-for (var i = 0; i < ingredients.length; i += 1) {
-  var li = document.createElement("li");
-  li.textContent = ingredients[i];
-  li.classList.add("item");
-  uiIngridiens.appendChild(li);
+  ingredients.forEach((el) => {
+    var li = document.createElement("li");
+    li.textContent = el;
+    li.classList.add("item");
+    ulToInclude.append(li);
+  });
+
+  document.querySelector("#ingredients").replaceWith(ulToInclude);
 }
+
+creatingUlListFromArray();

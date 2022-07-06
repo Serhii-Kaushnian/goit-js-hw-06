@@ -1,32 +1,16 @@
-const body = document.body;
-const ulElement = body.querySelector("#categories");
+function informationMessage() {
+  const allCategories = document.querySelectorAll(".item");
+  const amountOfCategories = allCategories.length;
 
-const numberOfCategories = ulElement.querySelectorAll("h2").length;
+  console.log(`Number of categories: ${amountOfCategories}`);
+  allCategories.forEach((value, index, array) => {
+    let nameOfCategory = `Number of categories: ${
+      value.querySelector("h2").textContent
+    }`;
+    let amountOfElements = `Elements: ${value.querySelectorAll("li").length}`;
+    console.log(nameOfCategory);
+    console.log(amountOfElements);
+  });
+}
 
-const nameOfFirstCategori = ulElement.querySelectorAll("h2")[0].textContent;
-
-const nameOfSecondCategori = ulElement.querySelectorAll("h2")[1].textContent;
-
-const nameOfThirdCategori = ulElement.querySelectorAll("h2")[2].textContent;
-
-const animalsUl = ulElement.querySelectorAll(".item > ul");
-const animalsUlLength = animalsUl[0].querySelectorAll("li").length;
-
-const productsUl = ulElement.querySelectorAll(".item > ul");
-const productsUlLength = productsUl[1].querySelectorAll("li").length;
-
-const technologiesUl = ulElement.querySelectorAll(".item > ul");
-const technologiesUlLength = technologiesUl[2].querySelectorAll("li").length;
-
-console.log(`
-Number of categories: ${numberOfCategories}
-
-Category:  ${nameOfFirstCategori}
-Elements:  ${animalsUlLength}
-
-Category:  ${nameOfSecondCategori}
-Elements:  ${productsUlLength}
-
-Category:  ${nameOfThirdCategori}
-Elements:  ${technologiesUlLength}
-`);
+informationMessage();

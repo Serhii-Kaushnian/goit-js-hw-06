@@ -12,20 +12,22 @@ const boxesDivEl = document.getElementById("boxes");
 var divElWidth = 30;
 var divElHeight = 30;
 
-createBtn.addEventListener("click", () => {
-  for (var i = 0; i < controlsInputEl.value; i += 1) {
+function createBoxes(amount) {
+  for (var i = 0; i < amount; i += 1) {
     var divEl = document.createElement("div");
     divEl.style.width = `${(divElWidth += 10)}px`;
     divEl.style.height = `${(divElHeight += 10)}px`;
     divEl.style.backgroundColor = getRandomHexColor();
     boxesDivEl.appendChild(divEl);
   }
+}
+
+createBtn.addEventListener("click", () => {
+  createBoxes(controlsInputEl.value);
 });
 
 resetBtn.addEventListener("click", () => {
-  while (boxesDivEl.firstChild) {
-    boxesDivEl.removeChild(boxesDivEl.firstChild);
-  }
+  boxesDivEl.innerHTML = "";
   divElWidth = 30;
   divElHeight = 30;
 });

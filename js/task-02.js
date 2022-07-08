@@ -6,19 +6,14 @@ const ingredients = [
   "Herbs",
   "Condiments",
 ];
+const ulEl = document.querySelector("#ingredients");
 
-function creatingUlListFromArray() {
-  let ulToInclude = document.createElement("ul");
-  ulToInclude.id = "#ingredients";
+// const createLiFromArray = (array) =>
+//   array.map((element) => `<li>${element}</li>`).join("");
 
-  ingredients.forEach((el) => {
-    var li = document.createElement("li");
-    li.textContent = el;
-    li.classList.add("item");
-    ulToInclude.append(li);
-  });
+const createLiFromArray = (array) =>
+  array.reduce((accum, element) => accum + `<li>${element}</li>`, "");
+const listToinclude = createLiFromArray(ingredients);
+ulEl.insertAdjacentHTML("beforeend", listToinclude);
 
-  document.querySelector("#ingredients").replaceWith(ulToInclude);
-}
-
-creatingUlListFromArray();
+console.log(createLiFromArray(ingredients));

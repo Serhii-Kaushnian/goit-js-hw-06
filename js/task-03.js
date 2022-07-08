@@ -13,23 +13,18 @@ const images = [
   },
 ];
 
-function creatingUlListFromArray() {
-  let ulToInclude = document.createElement("ul");
-  ulToInclude.classList.add("gallery");
-  ulToInclude.style.listStyle = "none";
+const ulEl = document.querySelector(".gallery");
 
-  images.forEach((el) => {
-    var liEl = document.createElement("li");
-    var imageEl = document.createElement("img");
-    imageEl.src = el.url;
-    imageEl.alt = el.alt;
-    imageEl.width = 640;
-    liEl.classList.add("item");
-    liEl.appendChild(imageEl);
-    ulToInclude.appendChild(liEl);
-  });
+const createLiFromArray = (array) =>
+  array.reduce(
+    (accum, element) =>
+      accum +
+      `<li style="list-style:none;width:640px; margin-bottom:30px; border-radius: 30px; overflow:hidden;">` +
+      `<img style=" width:640px; " src = ${element.url}'; alt = ${element.alt}" ></img>` +
+      `</li>`,
+    ""
+  );
 
-  document.querySelector(".gallery").replaceWith(ulToInclude);
-}
+const listToinclude = createLiFromArray(images);
 
-creatingUlListFromArray();
+ulEl.insertAdjacentHTML("beforeend", listToinclude);
